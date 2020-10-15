@@ -1,0 +1,36 @@
+{
+  "name": "@tripsit/database",
+  "private": true,
+  "version": "0.1.0",
+  "description": "TripSit shared PostgreSQL",
+  "main": "./scripts/install.js",
+  "scripts": {
+
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:make": "knex migrate:make --",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tripsit-me/database.git"
+  },
+  "keywords": [],
+  "author": "SevenCats <snowcolton@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tripsit-me/database/issues"
+  },
+  "homepage": "https://github.com/tripsit-me/database#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "knex": "^0.21.6",
+    "knex-stringcase": "^1.4.3",
+    "pg": "^8.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
