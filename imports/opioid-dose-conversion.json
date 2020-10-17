@@ -1,0 +1,89 @@
+{
+    "codeine": {
+        "toMorphine": "100",
+        "ba": {
+            "im": "91", "sc": "90", "oral": "90", "rectal": "90"
+        }
+    },
+    "tramadol": {
+        "toMorphine": "100",
+        "ba": {
+            "im": "100", "oral": "75", "rectal": "77"
+        }
+    },
+    "hydrocodone": {
+        "toMorphine": "14.28",
+        "ba": {
+            "oral": "87", "intranasal": "70" 
+        }
+    },
+    "oxycodone": {
+        "toMorphine": "6.6",
+        "ba": {
+            "oral": "80", "intranasal": "70", "rectal": "61.6", "iv": "100" 
+        }
+    },
+    "fentanyl": {
+        "toMorphine": "0.1",
+        "ba": {
+            "oral": "25", "sublingual": "65", "transdermal": "92", "iv": "100", "intranasal": "90", "rectal": "20"
+        }
+    },
+    "dihydrocodone": {
+        "toMorphine": "33",
+        "ba": {
+            "oral": "21" 
+        }
+    },
+    "meperidine": {
+        "toMorphine": "100",
+        "ba": {
+            "oral": "60", "im": "85", "rectal": "55", "nasal": "85", "iv": "100"
+        }
+    },
+    "methadone": {
+        "toMorphine": "10",
+        "ba": {
+            "oral": "90", "rectal": "76", "nasal": "85"
+        }
+    },
+    "hydromorphone": {
+        "toMorphine": "2",
+        "ba": {
+            "insufflated": "52.4", "rectal": "33", "oral": "35", "iv": "100"
+        }
+    },
+    "oxymorphone": {
+        "toMorphine": "1",
+        "ba": {
+            "insufflated": "43", "oral": "23", "rectal": "10", "im": "100", "iv": "100"
+        }
+    },
+    "buprenorphine": {
+        "toMorphine": ".250",
+        "ba": {
+            "sublingual": "30", "oral": "22", "im": "100"
+        }
+    },
+    "ketobemidone": {
+        "toMorphine": "10",
+        "ba": {
+            "oral": "34", "rectal": "44", "insufflated": "40"
+        }
+    },
+    "heroin": {
+        "toMorphine": "10",
+        "ba": {
+            "oral": "35", "im": "90", "vapourized": "55", "intranasal": "61", "iv": "100"
+        }
+    },
+    "morphine": {
+        "toMorphine": "10",
+        "ba": {
+            "oral": "40",
+            "rectal": "71",
+            "iv": "100",
+            "intranasal":"22"
+        }
+    }
+}
