@@ -40,9 +40,12 @@ exports.up = async function up(knex) {
 					.notNullable()
 					.unique();
 				table.text('summary').notNullable();
-				builder.interval('duration');
-				builder.interval('onset');
-				builder.interval('after_effects');
+				builder.interval('duration_min');
+				builder.interval('duration_max');
+				builder.interval('onset_min');
+				builder.interval('onset_max');
+				builder.interval('after_effects_min');
+				builder.interval('after_effects_max');
 				table.text('avoid');
 				table.float('dose_threshold_milligrams');
 				table.float('dose_light_milligrams');
@@ -84,22 +87,22 @@ exports.up = async function up(knex) {
 				}),
 
 				// Effects
-				knex.schema.createTable('effects', table => {
-					const builder = createTableBuilder(table);
-					builder.pk();
-					table
-						.text('name')
-						.notNullable()
-						.unique();
-					table.text('resource_url');
-				})
+				// knex.schema.createTable('effects', table => {
+				// 	const builder = createTableBuilder(table);
+				// 	builder.pk();
+				// 	table
+				// 		.text('name')
+				// 		.notNullable()
+				// 		.unique();
+				// 	table.text('resource_url');
+				// })
 
-					// Drug effects
-					.then(() => knex.schema.table('drug_effects', table => {
-						const builder = createTableBuilder(table);
-						builder.fk('drug_id', 'drugs.id').notNullable();
-						builder.fk('effect_id', 'effects.id').notNullable();
-					})),
+				// Drug effects
+				// .then(() => knex.schema.table('drug_effects', table => {
+				// 	const builder = createTableBuilder(table);
+				// 	builder.fk('drug_id', 'drugs.id').notNullable();
+				// 	builder.fk('effect_id', 'effects.id').notNullable();
+				// })),
 			])),
 
 		// Channels
@@ -116,6 +119,8 @@ exports.up = async function up(knex) {
 };
 
 exports.down = async function down(knex) {
+	const { dropType } = createBuilder(knex);
+
 	await Promise.all([
 		knex.schema.dropTableIfExists('channels'),
 		Promise.all([
@@ -125,7 +130,7 @@ exports.down = async function down(knex) {
 			knex.schema.dropTableIfExists('doses')
 				.then(() => Promise.all([
 					knex.schema.dropTableIfExists('users'),
-					knex.raw(sql`DROP TYPE IF EXISTS roa;`),
+					dropType('roa'),
 				])),
 		])
 			.then(() => knex.schema.dropTableIfExists('drugs')),

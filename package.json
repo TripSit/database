@@ -8,6 +8,8 @@
     "migrate:latest": "knex migrate:latest",
     "migrate:rollback": "knex migrate:rollback",
     "migrate:make": "knex migrate:make --",
+    "seed:make": "knex seed:make --",
+    "seed:run": "knex seed:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +28,7 @@
     "fake-tag": "^2.0.0",
     "knex": "^0.21.6",
     "knex-stringcase": "^1.4.3",
+    "luxon": "^1.25.0",
     "pg": "^8.4.1"
   },
   "devDependencies": {

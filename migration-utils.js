@@ -1,5 +1,7 @@
 'use strict';
 
+const sql = require('fake-tag');
+
 module.exports = function createBuilder(knex) {
 	return {
 		createTableBuilder(table) {
@@ -7,7 +9,7 @@ module.exports = function createBuilder(knex) {
 				pk(name = 'id') {
 					return table
 						.uuid(name)
-						.defaultTo(knex.raw('generate_uuid_v4()'))
+						.defaultTo(knex.raw('uuid_generate_v4()'))
 						.notNullable()
 						.primary();
 				},
@@ -29,6 +31,18 @@ module.exports = function createBuilder(knex) {
 					return table.specificType(name, 'interval');
 				},
 			};
+		},
+
+		async dropType(name) {
+			return knex.raw(sql`DROP TYPE IF EXISTS ${name};`);
+		},
+
+		async createExtension(name) {
+			return knex.raw(sql`CREATE EXTENSION IF NOT EXISTS "${name}";`);
+		},
+
+		async dropExtension(name) {
+			return knex.raw(sql`DROP EXTENSION IF EXISTS "${name}";`);
 		},
 	};
 };
