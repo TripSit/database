@@ -5,16 +5,18 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/index.ts"
+    "start": "npm run build -- -w",
+    "connect": "ts-node ./run"
   },
-   "keywords": [],
-   "author": "SevenCats <sevencats@tripsit.me>",
-   "license": "MIT",
-   "dependencies": {
+  "keywords": [],
+  "author": "SevenCats <sevencats@tripsit.me>",
+  "license": "MIT",
+  "dependencies": {
     "argon2": "^0.28.2",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.10",
-    "typeorm": "0.2.34"
+    "typeorm": "0.2.34",
+    "typeorm-naming-strategies": "^2.0.0"
   },
   "devDependencies": {
     "@types/argon2": "^0.15.0",
