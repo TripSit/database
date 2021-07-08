@@ -14,8 +14,8 @@ export class DrugName {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Drug, (drug) => drug.names)
-  drug: Drug;
+  @ManyToOne(() => Drug, (drug) => drug.names, { cascade: true })
+  drug: Promise<Drug>;
 
   @Column('text')
   text: string;

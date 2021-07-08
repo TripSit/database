@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   BeforeInsert,
 } from 'typeorm';
+import { IsEmail, IsDate } from 'class-validator';
 import { hash, verify } from 'argon2';
 
 type UserRole = 'user'
@@ -43,9 +44,10 @@ export class User {
 
   @Column('varchar', {
     unique: true,
-    length: 320,
     nullable: true,
+    length: 320,
   })
+  @IsEmail()
   email: string;
 
   @Column('char', { length: 60 })
@@ -61,6 +63,7 @@ export class User {
   banned: boolean;
 
   @Column('timestamp')
+  @IsDate()
   lastActive: Date;
 
   @CreateDateColumn()

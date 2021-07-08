@@ -5,8 +5,10 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
   OneToMany,
+  ManyToMany,
 } from 'typeorm';
 import { DrugName } from './DrugName';
+import { DrugCategory } from './DrugCategory';
 
 @Entity()
 export class Drug {
@@ -14,7 +16,10 @@ export class Drug {
   id: string;
 
   @OneToMany(() => DrugName, (drugName) => drugName.drug)
-  names: DrugName[];
+  names: Promise<DrugName[]>;
+
+  @ManyToMany(() => DrugCategory, (drugCategory) => drugCategory.drugs)
+  categories: Promise<DrugCategory[]>;
 
   @Column('text')
   summary: string;
@@ -25,7 +30,7 @@ export class Drug {
   @CreateDateColumn()
   createdAt: Date;
 
-  get displayName(): string {
-    return this.names.find((name) => name.isDisplayName).text;
+  get displayName(): Promise<string> {
+    return this.names.then((names) => names.find((name) => name.isDisplayName).text);
   }
 }
