@@ -9,17 +9,21 @@ import {
 } from 'typeorm';
 import { DrugName } from './DrugName';
 import { DrugCategory } from './DrugCategory';
+import { DrugVariant } from './DrugVariant';
 
 @Entity()
 export class Drug {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @OneToMany(() => DrugName, (drugName) => drugName.drug)
+  @OneToMany(() => DrugName, (name) => name.drug)
   names: Promise<DrugName[]>;
 
   @ManyToMany(() => DrugCategory, (drugCategory) => drugCategory.drugs)
   categories: Promise<DrugCategory[]>;
+
+  @OneToMany(() => DrugVariant, (variant) => variant.drug)
+  variants: Promise<DrugVariant[]>;
 
   @Column('text')
   summary: string;
