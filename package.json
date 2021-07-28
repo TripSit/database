@@ -4,7 +4,12 @@
   "description": "Database access layer for TripSit",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "babel": "babel ./src -d ./lib",
+    "build": "NODE_ENV=production npm run clean && npm run babel -- -s true",
+    "dev": "NODE_ENV=development npm run clean && npm run babel -- -ws inline",
+    "clean": "rm -rf ./lib",
+    "test": "npm run lint",
+    "lint": "eslint ."
   },
   "author": "SevenCats <sevencats@tripsit.me>",
   "license": "MIT",

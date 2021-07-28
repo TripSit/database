@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/drug.js"],"names":["module","exports","createDrugQueries","knex"],"mappings":"AAAA;;AAEAA,MAAM,CAACC,OAAP,GAAiB,SAASC,iBAAT,CAA2BC,IAA3B,EAAiC;AAChD,SAAO;AAAEA,IAAAA,IAAI,EAAJA;AAAF,GAAP;AACD,CAFD","sourcesContent":["'use strict';\n\nmodule.exports = function createDrugQueries(knex) {\n  return { knex };\n};\n"],"file":"drug.js"}
