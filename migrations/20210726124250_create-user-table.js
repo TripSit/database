@@ -20,7 +20,7 @@ exports.up = async function up(knex) {
       .notNullable();
 
     table
-      .timestamp('createdAt')
+      .timestamp('created_at')
       .notNullable()
       .defaultTo(knex.fn.now());
   });

@@ -3,6 +3,7 @@
 module.exports = {
   root: true,
   extends: ['airbnb-base'],
+  parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'script',
   },
