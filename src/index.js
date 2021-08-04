@@ -2,13 +2,15 @@
 
 const knex = require('knex');
 const knexConfig = require('../knexfile');
-const createDrugQueries = require('./drug');
+const drug = require('./drug');
+const user = require('./user');
 
 module.exports = function createDb() {
-  const conn = knex(knexConfig);
+  const db = knex(knexConfig);
 
   return {
-    knex: conn,
-    drug: createDrugQueries(conn),
+    knex: db,
+    drug: drug(db),
+    user: user(db),
   };
 };

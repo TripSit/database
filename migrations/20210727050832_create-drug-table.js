@@ -19,6 +19,11 @@ exports.up = async function up(knex) {
       table.text('errowid_experiences_url');
 
       table
+        .boolean('deleted')
+        .notNullable()
+        .defaultTo(false);
+
+      table
         .timestamp('updated_at')
         .notNullable()
         .defaultTo(knex.fn.now());
@@ -96,6 +101,11 @@ exports.up = async function up(knex) {
       table.float('duration_offset_max');
       table.float('duration_after_effects_min');
       table.float('duration_after_effects_max');
+
+      table
+        .boolean('deleted')
+        .notNullable()
+        .defaultTo(false);
 
       table
         .timestamp('updated_at')
