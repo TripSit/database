@@ -20,10 +20,10 @@ module.exports = function createUserQueries(knex) {
         .then(([newUser]) => newUser);
     },
 
-    async authenticate(nick, password) {
+    async authenticate(where, password) {
       const { password: hash } = await knex('users')
         .select('password')
-        .where('nick', nick)
+        .where(where)
         .first();
       return argon.verify(hash, password);
     },

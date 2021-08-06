@@ -64,3 +64,4 @@ yarn-error.log
 
 # Next
 .next
+/lib
