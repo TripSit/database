@@ -13,6 +13,11 @@ exports.up = async function up(knex) {
       table.text('description');
 
       table
+        .boolean('deleted')
+        .notNullable()
+        .defaultTo(false);
+
+      table
         .timestamp('created_at')
         .notNullable()
         .defaultTo(knex.fn.now());
@@ -29,6 +34,8 @@ exports.up = async function up(knex) {
         .notNullable()
         .references('id')
         .inTable('drugs');
+
+      table.text('note');
     });
 };
 
