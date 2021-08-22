@@ -49,6 +49,13 @@ module.exports = function createDrugQueries(knex) {
       return knex('drug_roas').where('drug_id', drugId);
     },
 
+    async articles(drugId) {
+      return knex('articles')
+        .innerJoin('article_drugs', 'article_drugs.article_id', 'articles.id')
+        .where('article_drugs.drug_id', drugId)
+        .select('articles.*');
+    },
+
     async deleteRoa(id) {
       await knex('drug_roas')
         .update('deleted', true)
